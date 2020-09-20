@@ -1,4 +1,4 @@
-package com.edu118.personnel;
+package com.edu118.user;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -1,4 +1,4 @@
-package com.edu118.staff;
+package com.edu118.salary;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
