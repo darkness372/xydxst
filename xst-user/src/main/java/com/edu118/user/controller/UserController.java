@@ -1,8 +1,13 @@
 package com.edu118.user.controller;
 
+import java.sql.Wrapper;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.edu118.user.dao.UserDao;
+import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -15,7 +20,9 @@ import com.edu118.common.service.user.UserService;
 import com.edu118.common.utils.PageUtils;
 import com.edu118.common.utils.R;
 
+
 /**
+ * 
  *
  * @author muyu
  * @email sunlightcs@gmail.com
@@ -26,6 +33,21 @@ import com.edu118.common.utils.R;
 public class UserController {
     @Autowired
     private UserService userService;
+    @Autowired
+    private  UserDao userDao;
+
+    /**
+     * 列表
+     */
+    @RequestMapping("/findAll")
+    public R findAll(){
+        List<UserEntity> userEntity = userDao.findUserAllProduct();
+        for (UserEntity ue : userEntity) {
+            System.out.println(ue);
+        }
+        return R.ok().put("page", userEntity);
+    }
+
 
     /**
      * 列表
@@ -33,9 +55,9 @@ public class UserController {
     @RequestMapping("/list")
     public R list(@RequestParam Map<String, Object> params){
         PageUtils page = userService.queryPage(params);
-
         return R.ok().put("page", page);
     }
+
 
     /**
      * 信息

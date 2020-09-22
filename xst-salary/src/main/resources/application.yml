@@ -5,9 +5,9 @@ spring:
     name: xst-salary
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://192.168.2.106:3306/db_xst?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=GMT%2B8
+    url: jdbc:mysql://192.168.198.128:5608/xydmall_pms?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=GMT%2B8
     username: root
-    password: root
+    password: 123456
     type: com.alibaba.druid.pool.DruidDataSource
     druid:
       initial-size: 5
@@ -21,26 +21,6 @@ spring:
     serialization:
       #决定返回的日期是否会被转换为时间戳，该属性默认为true，不配置该属性默认返回时间戳
       write-dates-as-timestamps: false
-  cloud:
-    nacos:
-      discovery:
-        server-addr: 192.168.2.106:8848 #注册中心地址
-        namespace: c58032ec-9a6d-4259-9be5-287a80d6a21c # 开发环境
-        group: salary-service   #设置注册的服务组名称
-  main:   #是否允许通过使用与现有定义同名的定义来覆盖Bean定义。
-    allow-bean-definition-overriding: true
-dubbo:
-  scan:
-    base-packages: com.edu118.service   #注解扫描路径
-  protocol:
-    name: dubbo     #使用dubbo协议
-    port: -1        # -1表示递增端口，从20880开始（默认）
-  registry:
-    address: nacos://192.168.2.106:8848  #注册中心地址
-  application:
-    qos-enable: false       #运维服务是否开启
-  consumer:
-    check: false            #启动时不检查依赖的服务
 # mybatis-plus相关配置
 mybatis-plus:
   # 以下配置均有默认值,可以不设置
@@ -55,6 +35,10 @@ mybatis-plus:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
     #关闭二级缓存
     cache-enabled: false
+  global-config:
+    db-config:
+      id-type: auto       #主键生成策略
+      table-prefix: pms_  #表前缀
 logging:
   level:
     com.edu118.dao: debug

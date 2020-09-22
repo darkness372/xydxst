@@ -14,7 +14,6 @@ import com.edu118.common.service.salary.SalaryService;
 
 
 @Service("salaryService")
-@org.apache.dubbo.config.annotation.Service
 public class SalaryServiceImpl extends ServiceImpl<SalaryDao, SalaryEntity> implements SalaryService {
 
     @Override

@@ -5,9 +5,9 @@ spring:
     name: xst-product
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/bd_xst?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=GMT%2B8
+    url: jdbc:mysql://192.168.198.128:5608/xydmall_pms?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=GMT%2B8
     username: root
-    password: root
+    password: 123456
     type: com.alibaba.druid.pool.DruidDataSource
     druid:
       initial-size: 5
@@ -38,7 +38,7 @@ mybatis-plus:
   global-config:
     db-config:
       id-type: auto       #主键生成策略
-      table-prefix: xst_  #表前缀
+      table-prefix: pms_  #表前缀
 logging:
   level:
     com.edu118.dao: debug

@@ -5,7 +5,10 @@ import com.baomidou.mybatisplus.annotation.TableName;
 
 import java.io.Serializable;
 import java.util.Date;
-import lombok.Data;
+import java.util.List;
+
+import com.edu118.common.entity.user.UserEntity;
+import lombok.*;
 
 /**
  * 
@@ -14,7 +17,10 @@ import lombok.Data;
  * @email sunlightcs@gmail.com
  * @date 2020-09-19 15:33:51
  */
-@Data
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @TableName("xst_product")
 public class ProductEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -29,4 +35,17 @@ public class ProductEntity implements Serializable {
 	 */
 	private String pname;
 
+	private List<UserEntity> userEntities;
+
+	public ProductEntity(String pname) {
+		this.pname = pname;
+	}
+
+	@Override
+	public String toString() {
+		return "ProductEntity{" +
+				"pid=" + pid +
+				", pname='" + pname + '\'' +
+				'}';
+	}
 }

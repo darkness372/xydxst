@@ -5,7 +5,12 @@ import com.baomidou.mybatisplus.annotation.TableName;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
+
+import com.edu118.common.entity.product.ProductEntity;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * 
@@ -15,6 +20,8 @@ import lombok.Data;
  * @date 2020-09-19 15:33:51
  */
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 @TableName("xst_user")
 public class UserEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -53,4 +60,9 @@ public class UserEntity implements Serializable {
 	 */
 	private Integer salaryPattern;
 
+	private List<ProductEntity> productEntities;
+
+	public UserEntity(String name) {
+		this.name = name;
+	}
 }
