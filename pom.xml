@@ -9,8 +9,8 @@
     <description>薪算通</description>
     <packaging>pom</packaging>
     <properties>
-        <spring-cloud.version>Hoxton.SR4</spring-cloud.version>
-        <spring-cloud-alibaba.version>2.2.1.RELEASE</spring-cloud-alibaba.version>
+        <spring-cloud.version>Hoxton.SR3</spring-cloud.version>
+        <spring-cloud-alibaba.version>2.2.0.RELEASE</spring-cloud-alibaba.version>
     </properties>
     <parent>
         <artifactId>spring-boot-starter-parent</artifactId>

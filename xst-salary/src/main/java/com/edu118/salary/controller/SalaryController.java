@@ -12,8 +12,6 @@ import com.edu118.common.service.salary.SalaryService;
 import com.edu118.common.utils.PageUtils;
 import com.edu118.common.utils.R;
 
-
-
 /**
  * 考勤表
  *
@@ -36,7 +34,6 @@ public class SalaryController {
 
         return R.ok().put("page", page);
     }
-
 
     /**
      * 信息

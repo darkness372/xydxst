@@ -4,21 +4,8 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>xst-salary</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>6</source>
-                    <target>6</target>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
     <name>xst-salary</name>
     <description>考勤模块</description>
-
     <parent>
         <groupId>com.edu118.xst</groupId>
         <artifactId>xst</artifactId>
@@ -45,5 +32,17 @@
             <version>2.2.1.RELEASE</version>
         </dependency>
     </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>6</source>
+                    <target>6</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>

@@ -1,13 +1,13 @@
 server:
-  port: 18500
+  port: 18502
 spring:
   application:
     name: xst-user
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://192.168.198.128:5608/xydmall_pms?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=GMT%2B8
+    url: jdbc:mysql://192.168.2.106:3306/db_xst?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=GMT%2B8
     username: root
-    password: 123456
+    password: root
     type: com.alibaba.druid.pool.DruidDataSource
     druid:
       initial-size: 5
@@ -21,10 +21,30 @@ spring:
     serialization:
       #决定返回的日期是否会被转换为时间戳，该属性默认为true，不配置该属性默认返回时间戳
       write-dates-as-timestamps: false
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.2.101:8848 #注册中心地址
+#        namespace: c58032ec-9a6d-4259-9be5-287a80d6a21c # 开发环境
+#        group: user-service   #设置注册的服务组名称
+  main:   #是否允许通过使用与现有定义同名的定义来覆盖Bean定义。
+    allow-bean-definition-overriding: true
+dubbo:
+  scan:
+    base-packages: com.edu118.service   #注解扫描路径
+  protocol:
+    name: dubbo     #使用dubbo协议
+    port: -1        # -1表示递增端口，从20880开始（默认）
+  registry:
+    address: nacos://192.168.2.101:8848  #注册中心地址
+  application:
+    qos-enable: false       #运维服务是否开启
+  consumer:
+    check: false            #启动时不检查依赖的服务
 # mybatis-plus相关配置
 mybatis-plus:
   # 以下配置均有默认值,可以不设置
-  mapper-locations: classpath:com/edu118/commodity/dao/mapper/*.xml
+  #mapper-locations: classpath:com/edu118/commodity/dao/mapper/*.xml
   #config-location: classpath:com/edu118/commodity/dao/mapper/mybatis.cfg.xml
   configuration:
     # 是否开启自动驼峰命名规则映射:从数据库列名到Java属性驼峰命名的类似映射
@@ -38,7 +58,7 @@ mybatis-plus:
   global-config:
     db-config:
       id-type: auto       #主键生成策略
-      table-prefix: pms_  #表前缀
+      table-prefix: xst_  #表前缀
 logging:
   level:
     com.edu118.dao: debug
