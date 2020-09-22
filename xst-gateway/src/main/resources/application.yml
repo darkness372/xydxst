@@ -16,6 +16,10 @@ spring:
           uri: http://localhost:18501
           predicates:
             - Path=/xst/salary/**
+        - id: UserService
+          uri: http://localhost:18502
+          predicates:
+            - Path=/xst/user/**
   application:
     name: xts-gateway
 

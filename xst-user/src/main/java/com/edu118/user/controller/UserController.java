@@ -15,10 +15,7 @@ import com.edu118.common.service.user.UserService;
 import com.edu118.common.utils.PageUtils;
 import com.edu118.common.utils.R;
 
-
-
 /**
- * 
  *
  * @author muyu
  * @email sunlightcs@gmail.com
@@ -39,7 +36,6 @@ public class UserController {
 
         return R.ok().put("page", page);
     }
-
 
     /**
      * 信息
