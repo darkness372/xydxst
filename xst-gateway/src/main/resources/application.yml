@@ -7,15 +7,17 @@ spring:
   cloud:
     nacos:
       discovery:
-        server-addr: 192.168.2.106:8848
-        namespace: c58032ec-9a6d-4259-9be5-287a80d6a21c
-        group: gateway
+        server-addr: 192.168.2.101:8848
     gateway:
       routes:
         - id: SalaryService
           uri: http://localhost:18501
           predicates:
             - Path=/xst/salary/**
+        - id: UserService
+          uri: http://localhost:18502
+          predicates:
+            - Path=/xst/user/**
   application:
     name: xts-gateway
 
