@@ -1,0 +1,16 @@
+server:
+  port: 18500
+
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+        namespace: b93df50e-003b-4744-acb0-0d84fe9613b8
+        group: gateway
+  application:
+    name: xts-gateway
+
+

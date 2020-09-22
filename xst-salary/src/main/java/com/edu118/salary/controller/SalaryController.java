@@ -1,14 +1,11 @@
 package com.edu118.salary.controller;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.edu118.common.entity.salary.SalaryEntity;
 import com.edu118.common.service.salary.SalaryService;
@@ -44,11 +41,11 @@ public class SalaryController {
     /**
      * 信息
      */
-    @RequestMapping("/info/{id}")
-    public R info(@PathVariable("id") Integer id){
-		SalaryEntity salary = salaryService.getById(id);
-
-        return R.ok().put("salary", salary);
+    @GetMapping("/salinfo")
+    public R info(){
+        List<SalaryEntity> list = salaryService.list();
+        System.out.println(list);
+        return R.ok().put("salary", list);
     }
 
     /**

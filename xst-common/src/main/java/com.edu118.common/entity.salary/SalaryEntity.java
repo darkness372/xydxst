@@ -9,7 +9,7 @@ import lombok.Data;
 
 /**
  * 考勤表
- * 
+ *
  * @author muyu
  * @email sunlightcs@gmail.com
  * @date 2020-09-19 15:33:51
@@ -20,14 +20,14 @@ public class SalaryEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * 
+	 *
 	 */
 	@TableId
 	private Integer id;
 	/**
 	 * 员工姓名
 	 */
-	private String username;
+	private String name;
 	/**
 	 * 上班天数
 	 */
