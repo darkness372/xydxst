@@ -36,6 +36,18 @@ public class UserController {
     private UserService userService;
 
     /**
+     * 级联查询
+     */
+    @RequestMapping("/findAll")
+    public R findAll(){
+        List<UserEntity> userEntity = userService.getUserAllProduct();
+        for (UserEntity ue : userEntity) {
+            System.out.println(ue);
+        }
+        return R.ok().put("page", userEntity);
+    }
+
+    /**
      * 列表
      */
     @RequestMapping("/list")

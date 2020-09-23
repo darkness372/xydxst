@@ -15,5 +15,5 @@ import java.util.List;
  */
 @Mapper
 public interface UserDao extends BaseMapper<UserEntity> {
-
+    public List<UserEntity> getUserAllProduct();
 }

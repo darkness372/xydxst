@@ -45,7 +45,7 @@ dubbo:
 # mybatis-plus相关配置
 mybatis-plus:
   # 以下配置均有默认值,可以不设置
-  #mapper-locations: classpath:com/edu118/commodity/dao/mapper/*.xml
+  mapper-locations: classpath:xmlMappers/*.xml
   #config-location: classpath:com/edu118/commodity/dao/mapper/mybatis.cfg.xml
   configuration:
     # 是否开启自动驼峰命名规则映射:从数据库列名到Java属性驼峰命名的类似映射
