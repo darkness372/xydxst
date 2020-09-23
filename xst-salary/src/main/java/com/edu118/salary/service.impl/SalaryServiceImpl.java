@@ -1,6 +1,8 @@
 package com.edu118.salary.service.impl;
 
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 import java.util.Map;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
@@ -22,7 +24,6 @@ public class SalaryServiceImpl extends ServiceImpl<SalaryDao, SalaryEntity> impl
                 new Query<SalaryEntity>().getPage(params),
                 new QueryWrapper<SalaryEntity>()
         );
-
         return new PageUtils(page);
     }
 

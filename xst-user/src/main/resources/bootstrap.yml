@@ -27,7 +27,7 @@ spring:
         server-addr: 192.168.2.106:8848 #注册中心地址
         namespace: c58032ec-9a6d-4259-9be5-287a80d6a21c # 开发环境
         group: salary-service   #设置注册的服务组名称
-      server-addr: 192.168.2.101:8848 #注册中心地址
+      server-addr: 192.168.2.106:8848 #注册中心地址
   main:   #是否允许通过使用与现有定义同名的定义来覆盖Bean定义。
     allow-bean-definition-overriding: true
 dubbo:

@@ -1,6 +1,8 @@
 package com.edu118.salary.controller;
 
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,8 +16,6 @@ import com.edu118.common.entity.salary.SalaryEntity;
 import com.edu118.common.service.salary.SalaryService;
 import com.edu118.common.utils.PageUtils;
 import com.edu118.common.utils.R;
-
-
 
 /**
  * 考勤表
@@ -39,7 +39,6 @@ public class SalaryController {
 
         return R.ok().put("page", page);
     }
-
 
     /**
      * 信息
@@ -85,9 +84,28 @@ public class SalaryController {
      * 薪资计算
      */
     @RequestMapping("/countSalary")
-    public R countSalary(@RequestBody SalaryEntity salary){
+    public R countSalary(@RequestParam Map<String, Object> params){
+        PageUtils page = salaryService.queryPage(params);
+        double monthSalary = 6000;  //月薪
+        double daySalary = monthSalary/26;  //日薪
+        double hourSalary = daySalary/8;
 
-        return R.ok();
+        List<?> list = page.getList();
+        HashMap<String, Double> map = new HashMap<String, Double>();
+        for (Object obj : list) {
+            System.out.println((SalaryEntity)obj);
+            double salary =
+                    monthSalary-((SalaryEntity) obj).getAbsDays()*daySalary*1.5
+                            -((SalaryEntity) obj).getComeLate()*daySalary*0.5
+                            -((SalaryEntity) obj).getLeaveEarly()*daySalary*0.5
+                            +((SalaryEntity) obj).getOverTime()*hourSalary*3;
+            System.out.println(((SalaryEntity) obj).getName()+"=>"+salary);
+
+            map.put(((SalaryEntity) obj).getName(),salary);
+//            System.out.println(map);
+        }
+        System.out.println(map);
+        return R.ok().put("map", map);
     }
 
 }

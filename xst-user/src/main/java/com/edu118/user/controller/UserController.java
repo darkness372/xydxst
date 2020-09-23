@@ -20,7 +20,6 @@ import com.edu118.common.service.user.UserService;
 import com.edu118.common.utils.PageUtils;
 import com.edu118.common.utils.R;
 
-
 /**
  * 
  *
@@ -42,7 +41,6 @@ public class UserController {
         PageUtils page = userService.queryPage(params);
         return R.ok().put("page", page);
     }
-
 
     /**
      * 信息
