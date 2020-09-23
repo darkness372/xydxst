@@ -33,21 +33,6 @@ import com.edu118.common.utils.R;
 public class UserController {
     @Autowired
     private UserService userService;
-    @Autowired
-    private  UserDao userDao;
-
-    /**
-     * 列表
-     */
-    @RequestMapping("/findAll")
-    public R findAll(){
-        List<UserEntity> userEntity = userDao.findUserAllProduct();
-        for (UserEntity ue : userEntity) {
-            System.out.println(ue);
-        }
-        return R.ok().put("page", userEntity);
-    }
-
 
     /**
      * 列表

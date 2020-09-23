@@ -27,7 +27,7 @@ public class SalaryEntity implements Serializable {
 	/**
 	 * 员工姓名
 	 */
-	private String username;
+	private String name;
 	/**
 	 * 上班天数
 	 */

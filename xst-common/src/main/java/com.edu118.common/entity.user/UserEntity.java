@@ -1,5 +1,6 @@
 package com.edu118.common.entity.user;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 
@@ -60,6 +61,7 @@ public class UserEntity implements Serializable {
 	 */
 	private Integer salaryPattern;
 
+	@TableField(exist = false)		// 自定义的属性，数据表没有，排除
 	private List<ProductEntity> productEntities;
 
 	public UserEntity(String name) {

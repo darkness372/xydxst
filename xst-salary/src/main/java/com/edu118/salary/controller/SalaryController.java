@@ -81,4 +81,13 @@ public class SalaryController {
         return R.ok();
     }
 
+    /**
+     * 薪资计算
+     */
+    @RequestMapping("/countSalary")
+    public R countSalary(@RequestBody SalaryEntity salary){
+
+        return R.ok();
+    }
+
 }

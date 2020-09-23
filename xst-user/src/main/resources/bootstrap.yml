@@ -24,7 +24,7 @@ spring:
   cloud:
     nacos:
       discovery:
-        server-addr: 192.168.2.101:8848 #注册中心地址
+        server-addr: 192.168.2.106:8848 #注册中心地址
         namespace: c58032ec-9a6d-4259-9be5-287a80d6a21c # 开发环境
         group: salary-service   #设置注册的服务组名称
       server-addr: 192.168.2.101:8848 #注册中心地址
@@ -37,7 +37,7 @@ dubbo:
     name: dubbo     #使用dubbo协议
     port: -1        # -1表示递增端口，从20880开始（默认）
   registry:
-    address: nacos://192.168.2.101:8848  #注册中心地址
+    address: nacos://192.168.2.106:8848  #注册中心地址
   application:
     qos-enable: false       #运维服务是否开启
   consumer:

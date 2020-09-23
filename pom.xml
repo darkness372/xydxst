@@ -40,7 +40,6 @@
         <module>xst-product</module>
         <module>xst-salary</module>
         <module>xst-user</module>
-        <module>xst-gateway</module>
     </modules>
 
 </project>
