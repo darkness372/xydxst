@@ -3,7 +3,8 @@ package com.edu118.salary.controller;
 import java.util.Arrays;
 import java.util.Map;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.apache.dubbo.config.annotation.Reference;
+
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,7 +28,7 @@ import com.edu118.common.utils.R;
 @RestController
 @RequestMapping("xst/salary")
 public class SalaryController {
-    @Autowired
+    @Reference
     private SalaryService salaryService;
 
     /**

@@ -1,6 +1,6 @@
 package com.edu118.salary.service.impl;
 
-import org.springframework.stereotype.Service;
+
 import java.util.Map;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
@@ -11,9 +11,12 @@ import com.edu118.common.utils.Query;
 import com.edu118.salary.dao.SalaryDao;
 import com.edu118.common.entity.salary.SalaryEntity;
 import com.edu118.common.service.salary.SalaryService;
+import org.apache.dubbo.config.annotation.Service;
+import org.springframework.stereotype.Component;
 
 
-@Service("salaryService")
+@Component("salaryService")
+@Service
 public class SalaryServiceImpl extends ServiceImpl<SalaryDao, SalaryEntity> implements SalaryService {
 
     @Override

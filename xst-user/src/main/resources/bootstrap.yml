@@ -32,7 +32,7 @@ spring:
     allow-bean-definition-overriding: true
 dubbo:
   scan:
-    base-packages: com.edu118.service   #注解扫描路径
+    base-packages: com.edu118.user.service   #注解扫描路径
   protocol:
     name: dubbo     #使用dubbo协议
     port: -1        # -1表示递增端口，从20880开始（默认）

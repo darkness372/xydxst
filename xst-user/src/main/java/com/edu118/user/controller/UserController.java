@@ -7,6 +7,7 @@ import java.util.Map;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.edu118.user.dao.UserDao;
+import org.apache.dubbo.config.annotation.Reference;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,7 +23,7 @@ import com.edu118.common.utils.R;
 
 
 /**
- * 
+ *
  *
  * @author muyu
  * @email sunlightcs@gmail.com
@@ -31,7 +32,7 @@ import com.edu118.common.utils.R;
 @RestController
 @RequestMapping("xst/user")
 public class UserController {
-    @Autowired
+    @Reference
     private UserService userService;
 
     /**

@@ -1,7 +1,9 @@
 package com.edu118.user.service.impl;
 
 import com.edu118.user.dao.UserDao;
-import org.springframework.stereotype.Service;
+import org.apache.dubbo.config.annotation.Service;
+import org.springframework.stereotype.Component;
+
 import java.util.Map;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
@@ -13,7 +15,8 @@ import com.edu118.common.entity.user.UserEntity;
 import com.edu118.common.service.user.UserService;
 
 
-@Service("userService")
+@Component("userService")
+@Service
 public class UserServiceImpl extends ServiceImpl<UserDao, UserEntity> implements UserService {
 
     @Override
