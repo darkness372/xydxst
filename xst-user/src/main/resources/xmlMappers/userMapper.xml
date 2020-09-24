@@ -7,16 +7,16 @@
         <id column="uid" property="uid"></id>
         <result column="name" property="name"></result>
         <!-- 级联映射 -->
-        <collection property="productEntities" javaType="java.util.List" ofType="com.edu118.common.entity.product.ProductEntity" >
+        <collection property="productEntities" column="uid" javaType="java.util.List" ofType="com.edu118.common.entity.product.ProductEntity" >
             <id column="pid" property="pid" ></id>
             <result column="pname" property="pname" ></result>
         </collection>
     </resultMap>
 
     <select id="getUserAllProduct" resultMap="UserResultMap" parameterType="int">
-		SELECT  u.name, p.pname
+		SELECT u.uid,  u.name, p.pname
 		FROM xst_user u,xst_product p,xst_user_product up
-		WHERE u.uid = up.uid AND p.pid = up.pid
+		WHERE u.uid = up.uid AND p.pid = up.pid ORDER BY u.uid
 	</select>
 
 </mapper>

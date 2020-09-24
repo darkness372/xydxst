@@ -1,9 +1,10 @@
 package com.edu118.user.controller;
 
-import java.sql.Wrapper;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 
 import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -37,10 +38,8 @@ public class UserController {
     @RequestMapping("/findAll")
     public R findAll(){
         List<UserEntity> userEntity = userService.getUserAllProduct();
-        for (UserEntity ue : userEntity) {
-            System.out.println(ue);
-        }
-        return R.ok().put("page", userEntity);
+
+        return R.ok().put("data", userEntity);
     }
 
     /**
