@@ -1,7 +1,6 @@
 package com.edu118.salary.controller;
 
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import org.apache.dubbo.config.annotation.Reference;
@@ -55,7 +54,6 @@ public class SalaryController {
     @RequestMapping("/save")
     public R save(@RequestBody SalaryEntity salary){
 		salaryService.save(salary);
-
         return R.ok();
     }
 
