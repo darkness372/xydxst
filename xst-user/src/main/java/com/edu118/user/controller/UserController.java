@@ -5,13 +5,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.edu118.common.entity.product.ProductEntity;
+import org.apache.catalina.User;
 import org.apache.dubbo.config.annotation.Reference;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.edu118.common.entity.user.UserEntity;
 import com.edu118.common.service.user.UserService;
@@ -20,6 +18,7 @@ import com.edu118.common.utils.R;
 
 /**
  *
+ *
  * @author muyu
  * @email sunlightcs@gmail.com
  * @date 2020-09-19 15:33:51
@@ -27,11 +26,9 @@ import com.edu118.common.utils.R;
 @RestController
 @RequestMapping("xst/user")
 public class UserController {
-
     @Reference
     private UserService userService;
 
-    /**
     /**
      * 级联查询
      */
@@ -87,8 +84,25 @@ public class UserController {
     @RequestMapping("/delete")
     public R delete(@RequestBody Integer[] uids){
 		userService.removeByIds(Arrays.asList(uids));
-
         return R.ok();
     }
 
+    /**
+     * 登录方法
+     */
+    @ResponseBody
+    @PostMapping("/login")
+    public R login(@RequestBody UserEntity userEntity){
+        System.out.println("请求到的数据为:    "+userEntity);
+        QueryWrapper qw = new QueryWrapper<UserEntity>();
+        qw.eq("username",userEntity.getUsername());
+        qw.eq("password",userEntity.getPassword());
+        UserEntity result = userService.getOne(qw);
+        System.out.println("查询的结果：" + result);
+        if (result == null) {
+            return R.error(1001,"用户名或密码错误！");
+        }
+        result.setPassword("");
+        return R.ok("登陆成功！").put("data",result);
+    }
 }
