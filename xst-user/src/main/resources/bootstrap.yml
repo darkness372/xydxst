@@ -23,21 +23,21 @@ spring:
       write-dates-as-timestamps: false
   cloud:
     nacos:
+      server-addr: 192.168.2.106:8848 #注册中心地址
       discovery:
         server-addr: 192.168.2.106:8848 #注册中心地址
-        namespace: c58032ec-9a6d-4259-9be5-287a80d6a21c # 开发环境
-        group: salary-service   #设置注册的服务组名称
-      server-addr: 192.168.2.106:8848 #注册中心地址
+      #namespace: c58032ec-9a6d-4259-9be5-287a80d6a21c # 开发环境
+      #group: salary-service   #设置注册的服务组名称
   main:   #是否允许通过使用与现有定义同名的定义来覆盖Bean定义。
     allow-bean-definition-overriding: true
 dubbo:
   scan:
-    base-packages: com.edu118.service   #注解扫描路径
+    base-packages: com.edu118.user.service   #注解扫描路径
   protocol:
     name: dubbo     #使用dubbo协议
     port: -1        # -1表示递增端口，从20880开始（默认）
   registry:
-    address: nacos://192.168.2.106:8848  #注册中心地址
+    address: nacos://192.168.2.106:8848  #注册中心地址k
   application:
     qos-enable: false       #运维服务是否开启
   consumer:
@@ -45,7 +45,7 @@ dubbo:
 # mybatis-plus相关配置
 mybatis-plus:
   # 以下配置均有默认值,可以不设置
-  #mapper-locations: classpath:com/edu118/commodity/dao/mapper/*.xml
+  mapper-locations: classpath:xmlMappers/*.xml
   #config-location: classpath:com/edu118/commodity/dao/mapper/mybatis.cfg.xml
   configuration:
     # 是否开启自动驼峰命名规则映射:从数据库列名到Java属性驼峰命名的类似映射

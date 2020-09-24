@@ -4,8 +4,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import org.springframework.beans.factory.annotation.Autowired;
+import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,7 +26,7 @@ import com.edu118.common.utils.R;
 @RestController
 @RequestMapping("xst/salary")
 public class SalaryController {
-    @Autowired
+    @Reference
     private SalaryService salaryService;
 
     /**
@@ -88,24 +87,19 @@ public class SalaryController {
         PageUtils page = salaryService.queryPage(params);
         double monthSalary = 6000;  //月薪
         double daySalary = monthSalary/26;  //日薪
-        double hourSalary = daySalary/8;
+        double hourSalary = daySalary/8;  //日薪
 
         List<?> list = page.getList();
-        HashMap<String, Double> map = new HashMap<String, Double>();
         for (Object obj : list) {
-            System.out.println((SalaryEntity)obj);
+            SalaryEntity se = (SalaryEntity)obj;
             double salary =
-                    monthSalary-((SalaryEntity) obj).getAbsDays()*daySalary*1.5
-                            -((SalaryEntity) obj).getComeLate()*daySalary*0.5
-                            -((SalaryEntity) obj).getLeaveEarly()*daySalary*0.5
-                            +((SalaryEntity) obj).getOverTime()*hourSalary*3;
-            System.out.println(((SalaryEntity) obj).getName()+"=>"+salary);
-
-            map.put(((SalaryEntity) obj).getName(),salary);
-//            System.out.println(map);
+                    monthSalary-(se.getAbsDays()*daySalary*1.5)
+                            -(se.getComeLate()*daySalary*0.5)
+                            -(se.getLeaveEarly()*daySalary*0.5)
+                            +(se.getOverTime()*hourSalary*3);
+            se.setSalary(salary);
         }
-        System.out.println(map);
-        return R.ok().put("map", map);
+        return R.ok().put("data", list);
     }
 
 }

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.edu118.user.dao.UserDao">
+    <resultMap type="com.edu118.common.entity.user.UserEntity" id="UserResultMap">
+        <id column="uid" property="uid"></id>
+        <result column="name" property="name"></result>
+        <!-- 级联映射 -->
+        <collection property="productEntities" javaType="java.util.List" ofType="com.edu118.common.entity.product.ProductEntity" >
+            <id column="pid" property="pid" ></id>
+            <result column="pname" property="pname" ></result>
+        </collection>
+    </resultMap>
+
+    <select id="getUserAllProduct" resultMap="UserResultMap" parameterType="int">
+		SELECT  u.name, p.pname
+		FROM xst_user u,xst_product p,xst_user_product up
+		WHERE u.uid = up.uid AND p.pid = up.pid
+	</select>
+
+</mapper>
+
